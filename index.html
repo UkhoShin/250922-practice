@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>자기소개서 | 홍길동</title>
+<style>
+:root{--fg:#1f2937;--muted:#6b7280;--bg:#f9fafb;--pri:#2563eb;}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;color:var(--fg);background:var(--bg);line-height:1.6}
+.container{max-width:880px;margin:0 auto;padding:32px 20px}
+.card{background:#fff;border-radius:14px;padding:28px;box-shadow:0 6px 24px rgba(0,0,0,.06);border:1px solid #e5e7eb}
+h1{margin:0 0 6px;font-size:28px}h2{margin:24px 0 10px;font-size:18px}
+p{margin:8px 0} .muted{color:var(--muted);font-size:14px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.badge{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;padding:4px 10px;border-radius:999px;font-size:12px}
+.section{margin-top:18px}
+a{color:var(--pri);text-decoration:none}a:hover{text-decoration:underline}
+ul{padding-left:18px;margin:8px 0}
+.header{display:flex;align-items:center;gap:16px}
+.photo{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#93c5fd,#c7d2fe);display:flex;align-items:center;justify-content:center;color:#1e3a8a;font-weight:700}
+.cta{margin-top:12px;display:flex;gap:10px}
+.btn{padding:8px 12px;border-radius:10px;border:1px solid #d1d5db;background:#fff} .btn.primary{background:var(--pri);border-color:var(--pri);color:#fff}
+</style>
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <div class="header">
+        <div class="photo">HD</div>
+        <div>
+          <h1>홍길동</h1>
+          <p class="muted">사용자 가치에 집착하는 프론트엔드 개발자</p>
+          <p class="muted">Seoul · hong@example.com · 010-1234-5678 · <a href="https://github.com/yourid" target="_blank" rel="noopener">GitHub</a></p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>소개</h2>
+        <p>문제를 구조화하고 빠르게 실험해 검증하는 것을 좋아합니다. 명확한 커뮤니케이션과 깔끔한 코드, 재사용 가능한 컴포넌트를 지향합니다.</p>
+      </div>
+
+      <div class="section">
+        <h2>핵심 역량</h2>
+        <div class="badges">
+          <span class="badge">HTML/CSS</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">React</span>
+          <span class="badge">TypeScript</span>
+          <span class="badge">UI/UX</span>
+          <span class="badge">Performance</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>경험</h2>
+        <ul>
+          <li>전자상거래 UI 리뉴얼로 전환율 18% 향상</li>
+          <li>디자인 시스템 도입, 공통 컴포넌트 24개 구축</li>
+          <li>웹 번들 최적화로 LCP 42% 개선</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>프로젝트</h2>
+        <ul>
+          <li>대시보드 SPA: 상태 관리 단순화, 초기 로드 35% 단축</li>
+          <li>접근성 개선: 키보드 내비게이션·명도 대비 기준 충족</li>
+        </ul>
+      </div>
+
+      <div class="cta">
+        <a class="btn primary" href="mailto:hong@example.com">메일 보내기</a>
+        <a class="btn" href="https://your-portfolio.example" target="_blank" rel="noopener">포트폴리오</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

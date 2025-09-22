@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>몰랑 포털</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif;background:#ffffff;color:#1f2937}
+.banner{background:#3b6fcc;color:#fff;padding:14px 16px;position:relative;text-align:center;font-weight:700}
+.top-links{position:absolute;right:16px;top:12px;font-weight:500}
+.top-links a{color:#e5efff;text-decoration:none;margin-left:12px}
+.top-links a:hover{text-decoration:underline}
+.menu{display:flex;gap:10px;align-items:center;padding:10px;background:#7db24d;border-top:4px solid #6aa23c;border-bottom:4px solid #6aa23c}
+.btn{appearance:none;border:2px solid #6aa23c;background:#7db24d;color:#fff;padding:10px 18px;border-radius:6px;font-weight:700;cursor:pointer;transition:transform .06s ease,filter .15s ease}
+.btn:focus{outline:3px solid rgba(255,255,255,.6);outline-offset:2px}
+.btn:hover{filter:brightness(1.05)}
+.btn:active{transform:translateY(1px)}
+.spacer{height:24px}
+.content{padding:18px;color:#64748b}
+</style>
+</head>
+<body>
+  <header class="banner">
+    배너
+    <nav class="top-links">
+      <a href="#" onclick="return refresh()">로그인</a>
+      <a href="#" onclick="return refresh()">회원가입</a>
+      <a href="#" onclick="return refresh()">FAQ</a>
+    </nav>
+  </header>
+
+  <nav class="menu" aria-label="주 메뉴" style="display: flex; gap: 0; padding: 0; border-top: 4px solid #6aa23c; border-bottom: 4px solid #6aa23c; background: #7db24d;">
+    <div style="flex:1; margin:0; border:1.5px solid #fff; border-right:2px solid #256a1b; border-radius:0; background:#7db24d; color:#fff; display:flex; align-items:center; justify-content:center; height:44px; font-weight:700; font-size:14px; cursor:pointer;" onclick="refresh()">공지</div>
+    <div style="flex:1; margin:0; border:1.5px solid #fff; border-right:2px solid #256a1b; border-radius:0; background:#7db24d; color:#fff; display:flex; align-items:center; justify-content:center; height:44px; font-weight:700; font-size:14px; cursor:pointer;" onclick="refresh()">게임(Unity)</div>
+    <div style="flex:1; margin:0; border:1.5px solid #fff; border-right:2px solid #256a1b; border-radius:0; background:#7db24d; color:#fff; display:flex; align-items:center; justify-content:center; height:44px; font-weight:700; font-size:14px; cursor:pointer;" onclick="refresh()">게임(온라인)</div>
+    <div style="flex:1; margin:0; border:1.5px solid #fff; border-right:2px solid #256a1b; border-radius:0; background:#7db24d; color:#fff; display:flex; align-items:center; justify-content:center; height:44px; font-weight:700; font-size:14px; cursor:pointer;" onclick="refresh()">소셜</div>
+    <div style="flex:1; margin:0; border:1.5px solid #fff; border-right:2px solid #256a1b; border-radius:0; background:#7db24d; color:#fff; display:flex; align-items:center; justify-content:center; height:44px; font-weight:700; font-size:14px; cursor:pointer;" onclick="refresh()">데이터</div>
+    <div style="flex:1; margin:0; border:1.5px solid #fff; border-radius:0; background:#7db24d; color:#fff; display:flex; align-items:center; justify-content:center; height:44px; font-weight:700; font-size:14px; cursor:pointer;" onclick="refresh()">마이페이지</div>
+  </nav>
+  <style>
+    .left-menu {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      max-width: 220px;
+      min-width: 120px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      border-right: 1px solid #e5e7eb;
+      background: #f8fafc;
+      padding: 0;
+      z-index: 100;
+    }
+    .left-menu .menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+    }
+    .left-menu .btn.menu-btn {
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid #e5e7eb;
+      background: none;
+      color: #1f2937;
+      text-align: left;
+      width: 100%;
+      padding: 16px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background .12s;
+    }
+    .left-menu .btn.menu-btn:hover, .left-menu .btn.menu-btn:focus {
+      background: #e0f2fe;
+      color: #2563eb;
+    }
+    .left-menu .btn.more-btn {
+      border-radius: 0 0 8px 8px;
+      border: none;
+      background: #7db24d;
+      color: #fff;
+      width: 100%;
+      padding: 12px 0;
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: auto;
+      transition: background .12s;
+    }
+    .left-menu .btn.more-btn:hover, .left-menu .btn.more-btn:focus {
+      background: #6aa23c;
+    }
+    .left-menu .more-list {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      min-width: 120px;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 200;
+    }
+    @media (max-width: 600px) {
+      .left-menu {
+        max-width: 100vw;
+        min-width: 0;
+        width: 100vw;
+        height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid #e5e7eb;
+        flex-direction: row;
+      }
+      .left-menu .menu-list {
+        flex-direction: row;
+        width: 100%;
+      }
+      .left-menu .btn.menu-btn, .left-menu .btn.more-btn {
+        width: auto;
+        padding: 12px 10px;
+        font-size: 15px;
+      }
+      .left-menu .more-list {
+        left: 0;
+        top: 100%;
+        min-width: 100vw;
+      }
+    }
+  </style>
+  <script>
+    // Responsive overflow logic for left menu
+    function handleMenuOverflow() {
+      const menu = document.querySelector('.left-menu');
+      const menuList = document.getElementById('menuList');
+      const moreBtn = document.getElementById('moreBtn');
+      const moreList = document.getElementById('moreList');
+      const menuBtns = Array.from(menuList.querySelectorAll('.menu-btn'));
+      // Reset: move all back to menuList
+      while (moreList.firstChild) {
+        menuList.appendChild(moreList.firstChild);
+      }
+      moreBtn.style.display = 'none';
+      moreList.style.display = 'none';
+
+      // Only apply overflow on desktop (fixed sidebar)
+      if (window.innerWidth > 600) {
+        // Calculate available height
+        const menuRect = menu.getBoundingClientRect();
+        const availableHeight = window.innerHeight - menuRect.top - 60; // 60px buffer for moreBtn
+        let usedHeight = 0;
+        let lastVisibleIdx = menuBtns.length - 1;
+        for (let i = 0; i < menuBtns.length; i++) {
+          menuBtns[i].style.display = '';
+          usedHeight += menuBtns[i].offsetHeight || 48;
+          if (usedHeight > availableHeight) {
+            lastVisibleIdx = i - 1;
+            break;
+          }
+        }
+        if (lastVisibleIdx < menuBtns.length - 1) {
+          // Move overflowed buttons to moreList
+          for (let i = menuBtns.length - 1; i > lastVisibleIdx; i--) {
+            moreList.insertBefore(menuBtns[i], moreList.firstChild);
+          }
+          moreBtn.style.display = '';
+        }
+      }
+    }
+    window.addEventListener('resize', handleMenuOverflow);
+    window.addEventListener('DOMContentLoaded', () => {
+      handleMenuOverflow();
+      // 더보기 버튼 토글
+      const moreBtn = document.getElementById('moreBtn');
+      const moreList = document.getElementById('moreList');
+      let moreOpen = false;
+      moreBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        moreOpen = !moreOpen;
+        moreList.style.display = moreOpen ? 'flex' : 'none';
+      });
+      document.addEventListener('click', function(){
+        moreList.style.display = 'none';
+        moreOpen = false;
+      });
+      moreList.addEventListener('click', function(e){
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+  <div class="spacer"></div>
+  <main class="content">
+    <p>각 버튼을 누르면 페이지가 새로고침됩니다.</p>
+  </main>
+
+  <script>
+  function refresh(){
+    window.location.reload();
+    return false;
+  }
+  </script>
+</body>
+</html>
+
