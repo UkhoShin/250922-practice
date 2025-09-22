@@ -101,42 +101,7 @@
         <section id="skills" class="skills">
             <div class="container">
                 <h2 class="section-title">Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Programming</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">Java</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Dummy Skill A</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="50%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Language</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">아랍어</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="20%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Dummy Skill B</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="10%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="skills-root" class="skills-grid"></div>
             </div>
         </section>
 
@@ -343,6 +308,35 @@
         </div>
     </footer>
 
+    <!-- Firebase config placeholder: fill with your Firebase project keys -->
+    <script>
+        window.FIREBASE_CONFIG = window.FIREBASE_CONFIG || {
+            /*
+            apiKey: "",
+            authDomain: "",
+            projectId: "",
+            storageBucket: "",
+            messagingSenderId: "",
+            appId: ""
+            */
+        };
+    </script>
+    <!-- Firebase SDK (modular) and lightweight bootstrap to expose Firestore to script.js -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+        import { getFirestore, collection, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+        function initFirebaseFromConfig() {
+            if (!window.FIREBASE_CONFIG || Object.keys(window.FIREBASE_CONFIG).length === 0) return;
+            if (window.db) return;
+            const app = initializeApp(window.FIREBASE_CONFIG);
+            window.db = getFirestore(app);
+            window.__fire = { collection, onSnapshot, query, orderBy };
+        }
+
+        initFirebaseFromConfig();
+        window.__initFirebase = initFirebaseFromConfig;
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
